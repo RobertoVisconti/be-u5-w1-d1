@@ -21,8 +21,8 @@ public class Pizzeria implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        logger.info("\n" + menu.toString());
         logger.info("\n***** Benvenuti da Nonna Anna *****");
+        menu.printMenu();
 
         Tavolo tavolo3 = new Tavolo(3, 6, StatoTavolo.LIBERO);
         Ordine ordine = new Ordine(1, tavolo3, 3, costoCoperto);
