@@ -4,6 +4,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -88,6 +90,18 @@ class BeU5W1D1ApplicationTests {
         double totOrdine = totCoperti + totProdotti;
 
         assertEquals(totOrdine, totale, "Il calcolo del tavolo non è corretto");
+    }
+
+
+    @ParameterizedTest
+    @DisplayName("Test sul calcolo totale del costo del coperto")
+    @CsvSource({"2", "4", "10"})
+    public void testCalcoloCoperti(int numCoperti) {
+        Ordine ordine = new Ordine(5, tavolo, numCoperti, costoCoperto);
+        double totaleCalcolato = ordine.getImportoTavolo();
+        double totaleCopertiAtteso = numCoperti * costoCoperto;
+        assertEquals(totaleCopertiAtteso, totaleCalcolato,
+                "Il calcolo dei coperti ha fallito per " + numCoperti + " persone!");
     }
 
 }
