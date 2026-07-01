@@ -39,4 +39,6 @@ public class Tavolo {
     public void setStatoTavolo(StatoTavolo statoTavolo) {
         this.statoTavolo = statoTavolo;
     }
+
+
 }
